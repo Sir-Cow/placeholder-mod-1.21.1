@@ -22,16 +22,12 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"placeholder-id" {
+		"placeholder" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
 	}
 
-}
-
-fabricApi {
-	configureDataGeneration()
 }
 
 dependencies {

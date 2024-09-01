@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "placeholder-id",
+	"id": "placeholder",
 	"version": "${version}",
-	"name": "placeholder-id",
+	"name": "placeholder",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -12,23 +12,20 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/placeholder-id/icon.png",
+	"icon": "assets/placeholder/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"sircow.placeholder.Placeholderid"
+			"sircow.placeholder.Placeholder"
 		],
 		"client": [
-			"sircow.placeholder.PlaceholderidClient"
-		],
-		"fabric-datagen": [
-			"sircow.placeholder.PlaceholderidDataGenerator"
+			"sircow.placeholder.PlaceholderClient"
 		]
 	},
 	"mixins": [
-		"placeholder-id.mixins.json",
+		"placeholder.mixins.json",
 		{
-			"config": "placeholder-id.client.mixins.json",
+			"config": "placeholder.client.mixins.json",
 			"environment": "client"
 		}
 	],
