@@ -13,7 +13,7 @@ public class Placeholder implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItemGroups.registerItemGroups();
+		//ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 	}
 }

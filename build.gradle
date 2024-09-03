@@ -38,7 +38,12 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
+
+	//Fabric Shield Lib
+	//modImplementation "com.github.CrimsonDawn45:Fabric-Shield-Lib:v${project.fabric_shield_lib_version}"
+	//modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
+	//modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
+	//modImplementation "com.github.Chocohead:Fabric-ASM:v${project.fabricasm_version}"
 }
 
 processResources {
@@ -84,5 +89,12 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+		allprojects {
+			repositories {
+				maven {url 'https://jitpack.io'}
+				maven {url "https://maven.terraformersmc.com/releases/"}
+				maven {url "https://api.modrinth.com/maven"}
+			}
+		}
 	}
 }
