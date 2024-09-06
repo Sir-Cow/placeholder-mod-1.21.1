@@ -5,6 +5,7 @@
   "mixins": [
     "ConduitEntityMixin",
     "ConduitMixin",
+    "CrossbowMixin",
     "TridentMixin"
   ],
   "injectors": {
