@@ -6,6 +6,7 @@
     "ConduitEntityMixin",
     "ConduitMixin",
     "CrossbowMixin",
+    "PersistentProjectileEntityMixin",
     "TridentMixin"
   ],
   "injectors": {
