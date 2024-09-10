@@ -8,18 +8,17 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import sircow.placeholder.Placeholder;
+import sircow.placeholder.block.ModBlocks;
 
 public class ModItemGroups {
-    /*
-    public static final ItemGroup TEST_GROUP = Registry.register(Registries.ITEM_GROUP, Identifier.of(Placeholder.MOD_ID, "test"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.test"))
-                    .icon(() -> new ItemStack(ModItems.TEST)).entries((displayContext, entries) -> {
-                        entries.add(ModItems.TEST);
-                        //entries.add(ModItems.TEST_SHIELD);
+    public static final ItemGroup PLACEHOLDER_GROUP = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of(Placeholder.MOD_ID, "placeholder"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.placeholder.placeholder_items"))
+                    .icon(() -> new ItemStack(ModBlocks.INDUCTOR_RAIL)).entries((displayContext, entries) -> {
+                        entries.add(ModBlocks.INDUCTOR_RAIL);
                     }).build());
 
     public static void registerItemGroups() {
         Placeholder.LOGGER.info("Registering Item Groups for " + Placeholder.MOD_ID);
     }
-    */
 }

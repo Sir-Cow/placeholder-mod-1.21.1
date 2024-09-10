@@ -3,10 +3,12 @@
   "package": "sircow.placeholder.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractMinecartEntityMixin",
     "ConduitEntityMixin",
     "ConduitMixin",
     "CrossbowMixin",
     "PersistentProjectileEntityMixin",
+    "PhantomSpawnerMixin",
     "TridentMixin"
   ],
   "injectors": {
