@@ -1,24 +1,24 @@
 {
   "variants": {
-    "powered=false,shape=ascending_east": {
+    "powered=true,shape=ascending_east": {
       "model": "placeholder:block/inductor_rail_raised_ne",
       "y": 90
     },
-    "powered=false,shape=ascending_north": {
+    "powered=true,shape=ascending_north": {
       "model": "placeholder:block/inductor_rail_raised_ne"
     },
-    "powered=false,shape=ascending_south": {
+    "powered=true,shape=ascending_south": {
       "model": "placeholder:block/inductor_rail_raised_sw"
     },
-    "powered=false,shape=ascending_west": {
+    "powered=true,shape=ascending_west": {
       "model": "placeholder:block/inductor_rail_raised_sw",
       "y": 90
     },
-    "powered=false,shape=east_west": {
+    "powered=true,shape=east_west": {
       "model": "placeholder:block/inductor_rail",
       "y": 90
     },
-    "powered=false,shape=north_south": {
+    "powered=true,shape=north_south": {
       "model": "placeholder:block/inductor_rail"
     }
   }

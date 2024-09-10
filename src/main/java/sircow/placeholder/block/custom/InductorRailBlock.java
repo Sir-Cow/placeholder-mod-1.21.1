@@ -119,7 +119,7 @@ public class InductorRailBlock extends AbstractRailBlock {
 
     public InductorRailBlock(AbstractBlock.Settings settings) {
         super(false, settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, Boolean.FALSE).with(SHAPE, RailShape.NORTH_SOUTH).with(WATERLOGGED, Boolean.FALSE));
+        this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, Boolean.TRUE).with(SHAPE, RailShape.NORTH_SOUTH).with(WATERLOGGED, Boolean.FALSE));
     }
 
     @Override
