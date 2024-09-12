@@ -1,5 +1,6 @@
 {
   "block.placeholder.inductor_rail": "Inductor Rail",
+  "block.placeholder.exposed_inductor_rail": "Exposed Inductor Rail",
 
   "itemgroup.placeholder.placeholder_items": "Placeholder"
 }

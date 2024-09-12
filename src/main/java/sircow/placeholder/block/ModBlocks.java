@@ -23,6 +23,8 @@ public class ModBlocks {
 
     public static final Block INDUCTOR_RAIL = registerBlock("inductor_rail",
             new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+    public static final Block EXPOSED_INDUCTOR_RAIL = registerBlock("exposed_inductor_rail",
+            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
 
 
     public static void registerModBlocks(){

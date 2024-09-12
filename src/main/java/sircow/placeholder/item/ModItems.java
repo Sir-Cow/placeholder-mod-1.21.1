@@ -11,6 +11,7 @@ import sircow.placeholder.block.ModBlocks;
 public class ModItems {
     // items
     public static final Item INDUCTOR_RAIL = registerItem("inductor_rail", new BlockItem(ModBlocks.INDUCTOR_RAIL, new Item.Settings()));
+    public static final Item EXPOSED_INDUCTOR_RAIL = registerItem("exposed_inductor_rail", new BlockItem(ModBlocks.EXPOSED_INDUCTOR_RAIL, new Item.Settings()));
 
     /*
     public static final Item TEST_SHIELD = registerItem("test_shield", new ShieldItem(new ShieldItem.Settings().maxDamage(2500)));

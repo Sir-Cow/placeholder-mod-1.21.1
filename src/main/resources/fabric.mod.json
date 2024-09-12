@@ -3,9 +3,9 @@
 	"id": "placeholder",
 	"version": "${version}",
 	"name": "placeholder",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Enhancing Minecraft Vanilla gameplay",
 	"authors": [
-		"Me!"
+		"Sir_Cow", "Perpillow"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",

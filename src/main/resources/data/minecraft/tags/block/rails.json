@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "placeholder:inductor_rail"
+    "placeholder:inductor_rail",
+    "placeholder:exposed_inductor_rail"
   ]
 }

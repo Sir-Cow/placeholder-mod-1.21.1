@@ -36,7 +36,10 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
         Vec3d newVector = vector.add(x, y, z);
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
         if (blockState.isOf(ModBlocks.INDUCTOR_RAIL)) {
-            return newVector.multiply(80 / 8d);
+            return newVector.multiply(40 / 8d);
+        }
+        else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL)) {
+            return newVector.multiply(50 / 8d);
         }
         return newVector;
     }
@@ -53,7 +56,10 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
         double speed = maxSpeed;
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
         if (blockState.isOf(ModBlocks.INDUCTOR_RAIL)) {
-            speed = 40.0;
+            speed = 10.0;
+        }
+        else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL)) {
+            speed = 10.0;
         }
         maxSpeed = speed;
         return speed / (this.isTouchingWater() ? 40.0 : 20.0);
