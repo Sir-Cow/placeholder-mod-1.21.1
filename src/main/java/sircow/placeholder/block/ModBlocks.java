@@ -54,11 +54,44 @@ public class ModBlocks {
                             .mapColor(MapColor.TEAL)
                             .sounds(BlockSoundGroup.COPPER)
             ));
+    public static final Block WAXED_INDUCTOR_RAIL = registerBlock("waxed_inductor_rail",
+            new InductorRailBlock(Oxidizable.OxidationLevel.UNAFFECTED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.ORANGE)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
+    public static final Block WAXED_EXPOSED_INDUCTOR_RAIL = registerBlock("waxed_exposed_inductor_rail",
+            new InductorRailBlock(Oxidizable.OxidationLevel.EXPOSED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
+    public static final Block WAXED_WEATHERED_INDUCTOR_RAIL = registerBlock("waxed_weathered_inductor_rail",
+            new InductorRailBlock(Oxidizable.OxidationLevel.WEATHERED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.DARK_AQUA)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
+    public static final Block WAXED_OXIDIZED_INDUCTOR_RAIL = registerBlock("waxed_oxidized_inductor_rail",
+            new InductorRailBlock(Oxidizable.OxidationLevel.OXIDIZED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.TEAL)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
 
     public static void initialize() {
         OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.INDUCTOR_RAIL, ModBlocks.EXPOSED_INDUCTOR_RAIL);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.EXPOSED_INDUCTOR_RAIL, ModBlocks.WEATHERED_INDUCTOR_RAIL);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.WEATHERED_INDUCTOR_RAIL, ModBlocks.OXIDIZED_INDUCTOR_RAIL);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(ModBlocks.INDUCTOR_RAIL, ModBlocks.WAXED_INDUCTOR_RAIL);
     }
 
     public static void registerModBlocks(){

@@ -35,16 +35,16 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
     private Vec3d acceleration(Vec3d vector, double x, double y, double z) {
         Vec3d newVector = vector.add(x, y, z);
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
-        if (blockState.isOf(ModBlocks.INDUCTOR_RAIL)) {
+        if (blockState.isOf(ModBlocks.INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_INDUCTOR_RAIL)) {
             return newVector.multiply(40 / 8d);
         }
-        else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL)) {
+        else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_EXPOSED_INDUCTOR_RAIL)) {
             return newVector.multiply(50 / 8d);
         }
-        else if (blockState.isOf(ModBlocks.WEATHERED_INDUCTOR_RAIL)) {
+        else if (blockState.isOf(ModBlocks.WEATHERED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_WEATHERED_INDUCTOR_RAIL)) {
             return newVector.multiply(60 / 8d);
         }
-        else if (blockState.isOf(ModBlocks.OXIDIZED_INDUCTOR_RAIL)) {
+        else if (blockState.isOf(ModBlocks.OXIDIZED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_OXIDIZED_INDUCTOR_RAIL)) {
             return newVector.multiply(80 / 8d);
         }
         return newVector;
@@ -61,16 +61,16 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
     public double maxSpeedIncrease(AbstractMinecartEntity instance) {
         double speed = maxSpeed;
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
-        if (blockState.isOf(ModBlocks.INDUCTOR_RAIL)) {
+        if (blockState.isOf(ModBlocks.INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_INDUCTOR_RAIL)) {
             speed = 10.0;
         }
-        else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL)) {
+        else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_EXPOSED_INDUCTOR_RAIL)) {
             speed = 12.0;
         }
-        else if (blockState.isOf(ModBlocks.WEATHERED_INDUCTOR_RAIL)) {
+        else if (blockState.isOf(ModBlocks.WEATHERED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_WEATHERED_INDUCTOR_RAIL)) {
             speed = 14.0;
         }
-        else if (blockState.isOf(ModBlocks.OXIDIZED_INDUCTOR_RAIL)) {
+        else if (blockState.isOf(ModBlocks.OXIDIZED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_OXIDIZED_INDUCTOR_RAIL)) {
             speed = 16.0;
         }
         maxSpeed = speed;

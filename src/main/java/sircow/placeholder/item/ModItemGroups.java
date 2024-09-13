@@ -19,6 +19,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.EXPOSED_INDUCTOR_RAIL);
                         entries.add(ModBlocks.WEATHERED_INDUCTOR_RAIL);
                         entries.add(ModBlocks.OXIDIZED_INDUCTOR_RAIL);
+                        entries.add(ModBlocks.WAXED_INDUCTOR_RAIL);
+                        entries.add(ModBlocks.WAXED_EXPOSED_INDUCTOR_RAIL);
+                        entries.add(ModBlocks.WAXED_WEATHERED_INDUCTOR_RAIL);
+                        entries.add(ModBlocks.WAXED_OXIDIZED_INDUCTOR_RAIL);
                     }).build());
 
     public static void registerItemGroups() {

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_weathered_inductor_rail",
+  "ingredients": [
+    {
+      "item": "placeholder:weathered_inductor_rail"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "placeholder:waxed_weathered_inductor_rail"
+  }
+}

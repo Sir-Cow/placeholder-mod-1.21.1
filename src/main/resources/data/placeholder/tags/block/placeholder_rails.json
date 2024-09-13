@@ -4,6 +4,10 @@
     "placeholder:inductor_rail",
     "placeholder:exposed_inductor_rail",
     "placeholder:weathered_inductor_rail",
-    "placeholder:oxidized_inductor_rail"
+    "placeholder:oxidized_inductor_rail",
+    "placeholder:waxed_inductor_rail",
+    "placeholder:waxed_exposed_inductor_rail",
+    "placeholder:waxed_weathered_inductor_rail",
+    "placeholder:waxed_oxidized_inductor_rail"
   ]
 }
