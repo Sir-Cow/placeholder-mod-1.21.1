@@ -25,5 +25,6 @@ public class Placeholder implements ModInitializer {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlocks.initialize();
 	}
 }

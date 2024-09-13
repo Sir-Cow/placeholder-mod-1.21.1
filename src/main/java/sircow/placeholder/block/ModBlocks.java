@@ -1,5 +1,6 @@
 package sircow.placeholder.block;
 
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -22,14 +23,43 @@ public class ModBlocks {
     }
 
     public static final Block INDUCTOR_RAIL = registerBlock("inductor_rail",
-            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+            new InductorRailBlock(Oxidizable.OxidationLevel.UNAFFECTED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.ORANGE)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
     public static final Block EXPOSED_INDUCTOR_RAIL = registerBlock("exposed_inductor_rail",
-            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+            new InductorRailBlock(Oxidizable.OxidationLevel.EXPOSED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
     public static final Block WEATHERED_INDUCTOR_RAIL = registerBlock("weathered_inductor_rail",
-            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+            new InductorRailBlock(Oxidizable.OxidationLevel.WEATHERED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.DARK_AQUA)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
     public static final Block OXIDIZED_INDUCTOR_RAIL = registerBlock("oxidized_inductor_rail",
-            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+            new InductorRailBlock(Oxidizable.OxidationLevel.OXIDIZED,
+                    AbstractBlock.Settings.copy(Blocks.RAIL)
+                            .noCollision()
+                            .strength(0.7F)
+                            .mapColor(MapColor.TEAL)
+                            .sounds(BlockSoundGroup.COPPER)
+            ));
 
+    public static void initialize() {
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.INDUCTOR_RAIL, ModBlocks.EXPOSED_INDUCTOR_RAIL);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.EXPOSED_INDUCTOR_RAIL, ModBlocks.WEATHERED_INDUCTOR_RAIL);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.WEATHERED_INDUCTOR_RAIL, ModBlocks.OXIDIZED_INDUCTOR_RAIL);
+    }
 
     public static void registerModBlocks(){
         Placeholder.LOGGER.info("Registering Mod Blocks for " + Placeholder.MOD_ID);
