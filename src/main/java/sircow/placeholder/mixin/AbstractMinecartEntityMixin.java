@@ -27,7 +27,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
     // check for rail tag
     @Redirect(method = "moveOnRail", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z"))
     private boolean poweredRailTagCheck(BlockState state, Block block) {
-        return state.isIn(Placeholder.TAG_POWERED_RAILS);
+        return state.isIn(Placeholder.TAG_COPPER_RAILS);
     }
 
     // set the acceleration
@@ -40,6 +40,12 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
         }
         else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL)) {
             return newVector.multiply(50 / 8d);
+        }
+        else if (blockState.isOf(ModBlocks.WEATHERED_INDUCTOR_RAIL)) {
+            return newVector.multiply(60 / 8d);
+        }
+        else if (blockState.isOf(ModBlocks.OXIDIZED_INDUCTOR_RAIL)) {
+            return newVector.multiply(80 / 8d);
         }
         return newVector;
     }
@@ -59,7 +65,13 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
             speed = 10.0;
         }
         else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL)) {
-            speed = 10.0;
+            speed = 12.0;
+        }
+        else if (blockState.isOf(ModBlocks.WEATHERED_INDUCTOR_RAIL)) {
+            speed = 14.0;
+        }
+        else if (blockState.isOf(ModBlocks.OXIDIZED_INDUCTOR_RAIL)) {
+            speed = 16.0;
         }
         maxSpeed = speed;
         return speed / (this.isTouchingWater() ? 40.0 : 20.0);

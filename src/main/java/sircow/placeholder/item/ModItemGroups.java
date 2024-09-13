@@ -17,6 +17,8 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModBlocks.INDUCTOR_RAIL)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.INDUCTOR_RAIL);
                         entries.add(ModBlocks.EXPOSED_INDUCTOR_RAIL);
+                        entries.add(ModBlocks.WEATHERED_INDUCTOR_RAIL);
+                        entries.add(ModBlocks.OXIDIZED_INDUCTOR_RAIL);
                     }).build());
 
     public static void registerItemGroups() {

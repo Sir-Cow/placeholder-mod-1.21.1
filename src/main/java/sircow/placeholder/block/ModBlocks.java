@@ -25,6 +25,10 @@ public class ModBlocks {
             new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
     public static final Block EXPOSED_INDUCTOR_RAIL = registerBlock("exposed_inductor_rail",
             new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+    public static final Block WEATHERED_INDUCTOR_RAIL = registerBlock("weathered_inductor_rail",
+            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
+    public static final Block OXIDIZED_INDUCTOR_RAIL = registerBlock("oxidized_inductor_rail",
+            new InductorRailBlock(AbstractBlock.Settings.copy(Blocks.RAIL).noCollision().strength(0.7F).sounds(BlockSoundGroup.METAL)));
 
 
     public static void registerModBlocks(){

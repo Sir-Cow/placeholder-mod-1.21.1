@@ -16,7 +16,7 @@ public class Placeholder implements ModInitializer {
 	public static final String MOD_ID = "placeholder";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final TagKey<Block> TAG_POWERED_RAILS = TagKey.of(
+	public static final TagKey<Block> TAG_COPPER_RAILS = TagKey.of(
 			RegistryKeys.BLOCK, Identifier.of("placeholder", "placeholder_rails")
 	);
 

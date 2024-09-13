@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "placeholder:inductor_rail",
-    "placeholder:exposed_inductor_rail"
+    "placeholder:exposed_inductor_rail",
+    "placeholder:weathered_inductor_rail",
+    "placeholder:oxidized_inductor_rail"
   ]
 }

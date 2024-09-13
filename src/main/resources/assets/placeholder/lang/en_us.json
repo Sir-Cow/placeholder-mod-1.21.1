@@ -1,6 +1,8 @@
 {
   "block.placeholder.inductor_rail": "Inductor Rail",
   "block.placeholder.exposed_inductor_rail": "Exposed Inductor Rail",
+  "block.placeholder.weathered_inductor_rail": "Weathered Inductor Rail",
+  "block.placeholder.oxidized_inductor_rail": "Oxidized Inductor Rail",
 
   "itemgroup.placeholder.placeholder_items": "Placeholder"
 }
