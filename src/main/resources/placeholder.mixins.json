@@ -9,6 +9,7 @@
     "CrossbowMixin",
     "PersistentProjectileEntityMixin",
     "PhantomSpawnerMixin",
+    "PlayerEntityMixin",
     "TridentMixin"
   ],
   "injectors": {
