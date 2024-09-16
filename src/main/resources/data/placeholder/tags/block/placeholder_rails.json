@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "minecraft:powered_rail",
     "placeholder:inductor_rail",
     "placeholder:exposed_inductor_rail",
     "placeholder:weathered_inductor_rail",

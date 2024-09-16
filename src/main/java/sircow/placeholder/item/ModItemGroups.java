@@ -26,6 +26,6 @@ public class ModItemGroups {
                     }).build());
 
     public static void registerItemGroups() {
-        Placeholder.LOGGER.info("Registering Item Groups for " + Placeholder.MOD_ID);
+        Placeholder.LOGGER.info("Registering Mod Item Groups for " + Placeholder.MOD_ID);
     }
 }

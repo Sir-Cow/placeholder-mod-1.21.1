@@ -61,7 +61,10 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
     public double maxSpeedIncrease(AbstractMinecartEntity instance) {
         double speed = maxSpeed;
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
-        if (blockState.isOf(ModBlocks.INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_INDUCTOR_RAIL)) {
+        if (blockState.isOf(Blocks.POWERED_RAIL)) {
+            speed = 8.0;
+        }
+        else if (blockState.isOf(ModBlocks.INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_INDUCTOR_RAIL)) {
             speed = 10.0;
         }
         else if (blockState.isOf(ModBlocks.EXPOSED_INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_EXPOSED_INDUCTOR_RAIL)) {

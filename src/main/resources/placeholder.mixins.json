@@ -4,7 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AbstractMinecartEntityMixin",
-    "ConduitEntityMixin",
+    "ConduitBlockEntityAccessor",
     "ConduitMixin",
     "CrossbowMixin",
     "PersistentProjectileEntityMixin",

@@ -1,6 +1,9 @@
 package sircow.placeholder.mixin;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.ConduitBlockEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,6 +13,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import sircow.placeholder.other.ModDamageTypes;
 
 import java.util.List;
 
@@ -53,6 +57,20 @@ public class ConduitMixin {
                 }
             }
         }
-        ci.cancel(); // Cancel the original method call
+        ci.cancel();
+    }
+    // change magic damage to custom damage type which makes player-killed loot drop
+    @Inject(method = "attackHostileEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;damage(Lnet/minecraft/entity/damage/DamageSource;F)Z"), cancellable = true)
+    private static void changeDamageSource(World world, BlockPos pos, BlockState state, List<BlockPos> activatingBlocks, ConduitBlockEntity blockEntity, CallbackInfo ci) {
+        ConduitBlockEntityAccessor accessor = (ConduitBlockEntityAccessor) blockEntity;
+        LivingEntity targetEntity = accessor.getTargetEntity();
+        if (targetEntity != null) {
+            PlayerEntity player = world.getPlayers().getFirst();
+            if (player != null) {
+                DamageSource damageSource = ModDamageTypes.of(world, ModDamageTypes.TAG_CONDUIT, player);
+                targetEntity.damage(damageSource, 4.0F);
+            }
+        }
+        ci.cancel();
     }
 }
