@@ -7,6 +7,7 @@
     "ConduitBlockEntityAccessor",
     "ConduitMixin",
     "CrossbowMixin",
+    "FoodComponentsMixin",
     "ItemsMixin",
     "PersistentProjectileEntityMixin",
     "PhantomSpawnerMixin",

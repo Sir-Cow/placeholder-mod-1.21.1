@@ -53,7 +53,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
     // set the speed cap
     @Redirect(method = "moveOnRail", at = @At(value = "INVOKE", target = "Ljava/lang/Math;min(DD)D"))
     private double speedCap(double a, double b) {
-        return Math.min(32.0, b);
+        return Math.min(100.0, b);
     }
 
     // increase speed
@@ -62,7 +62,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
         double speed = maxSpeed;
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
         if (blockState.isOf(Blocks.POWERED_RAIL)) {
-            speed = 8.0;
+            speed = 100.0;
         }
         else if (blockState.isOf(ModBlocks.INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_INDUCTOR_RAIL)) {
             speed = 32.0;
