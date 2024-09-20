@@ -8,8 +8,8 @@
 		"Sir_Cow", "Perpillow"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "",
+		"sources": "https://github.com/Sir-Cow/placeholder-mod-1.21.1"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/placeholder/icon.png",
