@@ -10,6 +10,7 @@ import sircow.placeholder.block.ModBlocks;
 
 public class ModItems {
     // items
+    public static final Item RAW_HIDE = registerItem("raw_hide", new Item(new Item.Settings()));
     public static final Item INDUCTOR_RAIL = registerItem("inductor_rail", new BlockItem(ModBlocks.INDUCTOR_RAIL, new Item.Settings()));
     public static final Item EXPOSED_INDUCTOR_RAIL = registerItem("exposed_inductor_rail", new BlockItem(ModBlocks.EXPOSED_INDUCTOR_RAIL, new Item.Settings()));
     public static final Item WEATHERED_INDUCTOR_RAIL = registerItem("weathered_inductor_rail", new BlockItem(ModBlocks.WEATHERED_INDUCTOR_RAIL, new Item.Settings()));
@@ -18,7 +19,6 @@ public class ModItems {
     public static final Item WAXED_EXPOSED_INDUCTOR_RAIL = registerItem("waxed_exposed_inductor_rail", new BlockItem(ModBlocks.WAXED_EXPOSED_INDUCTOR_RAIL, new Item.Settings()));
     public static final Item WAXED_WEATHERED_INDUCTOR_RAIL = registerItem("waxed_weathered_inductor_rail", new BlockItem(ModBlocks.WAXED_WEATHERED_INDUCTOR_RAIL, new Item.Settings()));
     public static final Item WAXED_OXIDIZED_INDUCTOR_RAIL = registerItem("waxed_oxidized_inductor_rail", new BlockItem(ModBlocks.WAXED_OXIDIZED_INDUCTOR_RAIL, new Item.Settings()));
-
     /*
     public static final Item TEST_SHIELD = registerItem("test_shield", new ShieldItem(new ShieldItem.Settings().maxDamage(2500)));
     // currently crashes on use, do not use until fix

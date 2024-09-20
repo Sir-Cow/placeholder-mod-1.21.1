@@ -8,6 +8,7 @@
     "ConduitMixin",
     "CrossbowMixin",
     "FoodComponentsMixin",
+    "HungerManagerMixin",
     "ItemsMixin",
     "PersistentProjectileEntityMixin",
     "PhantomSpawnerMixin",
