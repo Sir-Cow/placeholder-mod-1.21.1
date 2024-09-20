@@ -98,4 +98,3 @@ public class ModBlocks {
         Placeholder.LOGGER.info("Registering Mod Blocks for " + Placeholder.MOD_ID);
     }
 }
-

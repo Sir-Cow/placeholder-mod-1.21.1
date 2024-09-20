@@ -26,18 +26,21 @@ public abstract class ItemsMixin {
     private static int modifyLingeringPotionStackSize(int old) { return 16; }
 
     // modify stew/soup stack sizes
-    @Mutable @Final @Shadow public static Item BEETROOT_SOUP;
-    @Mutable @Final @Shadow public static Item MUSHROOM_STEW;
-    @Mutable @Final @Shadow public static Item RABBIT_STEW;
-
-    @Inject(method = "<clinit>", at = @At("TAIL"))
-    private static void modifyStewStackSize(CallbackInfo ci) {
-        BEETROOT_SOUP = register("beetroot_soup", new Item(new Item.Settings().maxCount(16).food(FoodComponents.BEETROOT_SOUP)));
-        MUSHROOM_STEW = register("mushroom_stew", new Item(new Item.Settings().maxCount(16).food(FoodComponents.MUSHROOM_STEW)));
-        RABBIT_STEW = register("rabbit_stew", new Item(new Item.Settings().maxCount(16).food(FoodComponents.RABBIT_STEW)));
-    }
+    @ModifyArg(method = "<clinit>", slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=beetroot_soup")),
+            at = @At(value = "INVOKE", target = "net/minecraft/item/Item.<init>(Lnet/minecraft/item/Item$Settings;)V", ordinal = 0))
+    private static Item.Settings modifyBeetrootSoup(Item.Settings vanilla)
+    { return new Item.Settings().maxCount(16).food(FoodComponents.BEETROOT_SOUP); }
+    @ModifyArg(method = "<clinit>", slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=mushroom_stew")),
+            at = @At(value = "INVOKE", target = "net/minecraft/item/Item.<init>(Lnet/minecraft/item/Item$Settings;)V", ordinal = 0))
+    private static Item.Settings modifyMushroomStew(Item.Settings vanilla)
+    { return new Item.Settings().maxCount(16).food(FoodComponents.MUSHROOM_STEW); }
+    @ModifyArg(method = "<clinit>", slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=rabbit_stew")),
+            at = @At(value = "INVOKE", target = "net/minecraft/item/Item.<init>(Lnet/minecraft/item/Item$Settings;)V", ordinal = 0))
+    private static Item.Settings modifyRabbitStew(Item.Settings vanilla)
+    { return new Item.Settings().maxCount(16).food(FoodComponents.RABBIT_STEW); }
 
     @ModifyArg(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item$Settings;maxCount(I)Lnet/minecraft/item/Item$Settings;", ordinal = 0),
             slice = @Slice( from = @At(value = "NEW", target = "Lnet/minecraft/item/SuspiciousStewItem;")))
     private static int modifySuspiciousStewStackSize(int old) { return 16; }
 }
+
