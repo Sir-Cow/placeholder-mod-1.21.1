@@ -24,7 +24,7 @@ public class InductorRailBlock extends AbstractRailBlock implements Oxidizable {
     public static final BooleanProperty POWERED = Properties.POWERED;
 
     public InductorRailBlock(OxidationLevel oxidationLevel, Settings settings) {
-        super(false, settings);
+        super(true, settings);
         this.oxidationLevel = oxidationLevel;
         this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, Boolean.TRUE).with(SHAPE, RailShape.NORTH_SOUTH).with(WATERLOGGED, Boolean.FALSE));
     }

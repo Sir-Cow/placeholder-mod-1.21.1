@@ -3,6 +3,7 @@ package sircow.placeholder.mixin;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.PoweredRailBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
@@ -61,7 +62,7 @@ public abstract class AbstractMinecartEntityMixin extends Entity {
     public double maxSpeedIncrease(AbstractMinecartEntity instance) {
         double speed = maxSpeed;
         BlockState blockState = this.getWorld().getBlockState(this.getBlockPos());
-        if (blockState.isOf(Blocks.POWERED_RAIL)) {
+        if (blockState.isOf(Blocks.POWERED_RAIL) && blockState.get(PoweredRailBlock.POWERED)) {
             speed = 100.0;
         }
         else if (blockState.isOf(ModBlocks.INDUCTOR_RAIL) || blockState.isOf(ModBlocks.WAXED_INDUCTOR_RAIL)) {
