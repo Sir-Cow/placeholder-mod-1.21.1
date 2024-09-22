@@ -3,8 +3,6 @@ package sircow.placeholder;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
