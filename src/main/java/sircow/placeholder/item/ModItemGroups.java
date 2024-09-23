@@ -16,6 +16,7 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.placeholder.placeholder_items"))
                     .icon(() -> new ItemStack(ModBlocks.INDUCTOR_RAIL)).entries((displayContext, entries) -> {
                         entries.add(ModItems.RAW_HIDE);
+                        entries.add(ModBlocks.NEW_CAULDRON_BLOCK);
                         entries.add(ModBlocks.INDUCTOR_RAIL);
                         entries.add(ModBlocks.EXPOSED_INDUCTOR_RAIL);
                         entries.add(ModBlocks.WEATHERED_INDUCTOR_RAIL);

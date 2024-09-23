@@ -1,5 +1,6 @@
 {
   "item.placeholder.raw_hide": "Raw Hide",
+
   "block.placeholder.inductor_rail": "Inductor Rail",
   "block.placeholder.exposed_inductor_rail": "Exposed Inductor Rail",
   "block.placeholder.weathered_inductor_rail": "Weathered Inductor Rail",
@@ -8,6 +9,7 @@
   "block.placeholder.waxed_exposed_inductor_rail": "Waxed Exposed Inductor Rail",
   "block.placeholder.waxed_weathered_inductor_rail": "Waxed Weathered Inductor Rail",
   "block.placeholder.waxed_oxidized_inductor_rail": "Waxed Oxidized Inductor Rail",
+  "block.placeholder.new_cauldron": "New Cauldron",
 
   "itemgroup.placeholder.placeholder_items": "Placeholder"
 }

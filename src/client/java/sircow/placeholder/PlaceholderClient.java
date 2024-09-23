@@ -2,12 +2,17 @@ package sircow.placeholder;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import sircow.placeholder.block.ModBlocks;
+import sircow.placeholder.screen.ModScreenHandlers;
+import sircow.placeholder.screen.NewCauldronBlockScreen;
 
 public class PlaceholderClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+		HandledScreens.register(ModScreenHandlers.NEW_CAULDRON_BLOCK_SCREEN_HANDLER, NewCauldronBlockScreen::new);
+		// enable rail textures to be transparent
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.INDUCTOR_RAIL, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPOSED_INDUCTOR_RAIL, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WEATHERED_INDUCTOR_RAIL, RenderLayer.getCutout());

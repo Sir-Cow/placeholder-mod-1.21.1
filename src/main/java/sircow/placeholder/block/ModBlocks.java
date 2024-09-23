@@ -10,6 +10,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import sircow.placeholder.Placeholder;
 import sircow.placeholder.block.custom.InductorRailBlock;
+import sircow.placeholder.block.custom.NewCauldronBlock;
 
 public class ModBlocks {
     private static Block registerBlock(String name, Block block) {
@@ -86,6 +87,9 @@ public class ModBlocks {
                             .mapColor(MapColor.TEAL)
                             .sounds(BlockSoundGroup.COPPER)
             ));
+
+    public static final Block NEW_CAULDRON_BLOCK = registerBlock("new_cauldron",
+            new NewCauldronBlock(Block.Settings.copy(Blocks.CAULDRON).strength(0.7F).nonOpaque()));
 
     public static void initialize() {
         OxidizableBlocksRegistry.registerOxidizableBlockPair(ModBlocks.INDUCTOR_RAIL, ModBlocks.EXPOSED_INDUCTOR_RAIL);

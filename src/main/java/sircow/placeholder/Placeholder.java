@@ -1,7 +1,6 @@
 package sircow.placeholder;
 
 import net.fabricmc.api.ModInitializer;
-
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -9,9 +8,11 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sircow.placeholder.block.ModBlocks;
+import sircow.placeholder.block.entity.ModBlockEntities;
 import sircow.placeholder.item.ModItemGroups;
 import sircow.placeholder.item.ModItems;
 import sircow.placeholder.other.ModDamageTypes;
+import sircow.placeholder.screen.ModScreenHandlers;
 
 public class Placeholder implements ModInitializer {
 	public static final String MOD_ID = "placeholder";
@@ -27,6 +28,8 @@ public class Placeholder implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModDamageTypes.registerModDamageTypes();
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 		ModBlocks.initialize();
 	}
 }
