@@ -25,6 +25,9 @@ import org.jetbrains.annotations.Nullable;
 import sircow.placeholder.item.ModItems;
 import sircow.placeholder.screen.NewCauldronBlockScreenHandler;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
@@ -38,6 +41,29 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
     private int maxProgress = 100;
     private int progressWater = 0;
     private int maxWaterProgress = 64;
+
+    // define recipes
+    private static final Map<Item, Item> conversionMap = new HashMap<>();
+    static {
+        conversionMap.put(ModItems.RAW_HIDE, Items.LEATHER);
+        conversionMap.put(Items.DIRT, Items.MUD);
+        conversionMap.put(Items.BLACK_CONCRETE_POWDER, Items.BLACK_CONCRETE);
+        conversionMap.put(Items.BLUE_CONCRETE_POWDER, Items.BLUE_CONCRETE);
+        conversionMap.put(Items.BROWN_CONCRETE_POWDER, Items.BROWN_CONCRETE);
+        conversionMap.put(Items.CYAN_CONCRETE_POWDER, Items.CYAN_CONCRETE);
+        conversionMap.put(Items.GRAY_CONCRETE_POWDER, Items.GRAY_CONCRETE);
+        conversionMap.put(Items.GREEN_CONCRETE_POWDER, Items.GREEN_CONCRETE);
+        conversionMap.put(Items.LIGHT_BLUE_CONCRETE_POWDER, Items.LIGHT_BLUE_CONCRETE);
+        conversionMap.put(Items.LIGHT_GRAY_CONCRETE_POWDER, Items.LIGHT_GRAY_CONCRETE);
+        conversionMap.put(Items.LIME_CONCRETE_POWDER, Items.LIME_CONCRETE);
+        conversionMap.put(Items.MAGENTA_CONCRETE_POWDER, Items.MAGENTA_CONCRETE);
+        conversionMap.put(Items.ORANGE_CONCRETE_POWDER, Items.ORANGE_CONCRETE);
+        conversionMap.put(Items.PINK_CONCRETE_POWDER, Items.PINK_CONCRETE);
+        conversionMap.put(Items.PURPLE_CONCRETE_POWDER, Items.PURPLE_CONCRETE);
+        conversionMap.put(Items.RED_CONCRETE_POWDER, Items.RED_CONCRETE);
+        conversionMap.put(Items.WHITE_CONCRETE_POWDER, Items.WHITE_CONCRETE);
+        conversionMap.put(Items.YELLOW_CONCRETE_POWDER, Items.YELLOW_CONCRETE);
+    }
 
     public NewCauldronBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.NEW_CAULDRON_BLOCK_ENTITY, pos, state);
@@ -154,12 +180,12 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
     }
 
     private void craftItem() {
-        if (this.getStack(INPUT_SLOT).getItem() == ModItems.RAW_HIDE) {
-            ItemStack result = new ItemStack(Items.LEATHER);
-            this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
-        }
-        else if (this.getStack(INPUT_SLOT).getItem() == Items.DIRT) {
-            ItemStack result = new ItemStack(Items.MUD);
+        Item inputItem = this.getStack(INPUT_SLOT).getItem();
+        Item outputItem = conversionMap.get(inputItem);
+
+        // start crafting process if recipe is successful
+        if (outputItem != null) {
+            ItemStack result = new ItemStack(outputItem);
             this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
         }
         this.removeStack(INPUT_SLOT, 1);
@@ -176,38 +202,39 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
 
     private void insertWater() {
         PotionContentsComponent potionContentsComponent = getStack(INPUT_SLOT_TWO).get(DataComponentTypes.POTION_CONTENTS);
+        // water bucket
         if ((getStack(INPUT_SLOT_TWO).getItem() == Items.WATER_BUCKET)
                 && ((this.progressWater != this.maxWaterProgress)
-                || (this.progressWater + 16 < this.maxWaterProgress))) {
+                || (this.progressWater + 8 < this.maxWaterProgress))) {
             ItemStack emptyBucket = new ItemStack(Items.BUCKET);
-            this.progressWater += 16;
+            this.progressWater += 8;
             this.removeStack(INPUT_SLOT_TWO, 1);
             this.setStack(INPUT_SLOT_TWO, new ItemStack(emptyBucket.getItem()));
         }
+        // water bottle
         else if ((getStack(INPUT_SLOT_TWO).getItem() == Items.POTION && (potionContentsComponent != null && potionContentsComponent.matches(Potions.WATER)))
                 && ((this.progressWater != this.maxWaterProgress)
-                || (this.progressWater + (getStack(INPUT_SLOT_TWO).getCount() * 4) < this.maxWaterProgress))) {
+                || (this.progressWater + (getStack(INPUT_SLOT_TWO).getCount() * 2) < this.maxWaterProgress))) {
             int stackSize = getStack(INPUT_SLOT_TWO).getCount();
-            this.progressWater += stackSize * 4;
+            this.progressWater += stackSize * 2;
             ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
             this.removeStack(INPUT_SLOT_TWO, 1);
             this.setStack(INPUT_SLOT_TWO, new ItemStack(emptyBottle.getItem()));
         }
-
+        // cap water limit at 100
         if (this.progressWater > this.maxWaterProgress){
             this.progressWater = 100;
         }
     }
 
     private boolean hasRecipe() {
-        if (this.getStack(INPUT_SLOT).getItem() == ModItems.RAW_HIDE) {
-            ItemStack result = new ItemStack(Items.LEATHER);
-            boolean hasInput = getStack(INPUT_SLOT).getItem() == ModItems.RAW_HIDE;
-            return hasInput && this.progressWater >= 1 && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
-        }
-        else if (this.getStack(INPUT_SLOT).getItem() == Items.DIRT) {
-            ItemStack result = new ItemStack(Items.MUD);
-            boolean hasInput = getStack(INPUT_SLOT).getItem() == Items.DIRT;
+        // check if inserted item has recipe
+        Item inputItem = this.getStack(INPUT_SLOT).getItem();
+        Item outputItem = conversionMap.get(inputItem);
+
+        if (outputItem != null) {
+            ItemStack result = new ItemStack(outputItem);
+            boolean hasInput = getStack(INPUT_SLOT).getItem() == inputItem;
             return hasInput && this.progressWater >= 1 && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
         }
         return false;

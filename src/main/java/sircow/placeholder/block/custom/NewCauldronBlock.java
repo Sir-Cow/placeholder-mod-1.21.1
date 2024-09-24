@@ -77,7 +77,6 @@ public class NewCauldronBlock extends BlockWithEntity implements BlockEntityProv
                 player.openHandledScreen(screenHandlerFactory);
             }
         }
-
         return ActionResult.SUCCESS;
     }
 
