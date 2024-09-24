@@ -19,8 +19,6 @@ public class NewCauldronBlockScreen extends HandledScreen<NewCauldronBlockScreen
     @Override
     protected void init() {
         super.init();
-        titleY = 1000;
-        playerInventoryTitleY = 1000;
     }
 
     @Override
@@ -34,12 +32,21 @@ public class NewCauldronBlockScreen extends HandledScreen<NewCauldronBlockScreen
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         renderProgressArrow(context, x, y);
+        renderProgressWater(context, x, y);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
+            context.drawTexture(TEXTURE, x + 85, y + 34,
+                    176, 0,
+                    8, handler.getScaledProgressArrow());
         }
+    }
+
+    private void renderProgressWater(DrawContext context, int x, int y) {
+        context.drawTexture(TEXTURE, x + 152, y + 15 + (32 - handler.getScaledProgressWater()),
+                176, 32 + (32 - handler.getScaledProgressWater()),
+                16, handler.getScaledProgressWater());
     }
 
     @Override

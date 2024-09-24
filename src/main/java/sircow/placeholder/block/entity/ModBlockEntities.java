@@ -16,5 +16,4 @@ public class ModBlockEntities {
     public static void registerBlockEntities() {
         Placeholder.LOGGER.info("Registering Block Entities for " + Placeholder.MOD_ID);
     }
-
 }

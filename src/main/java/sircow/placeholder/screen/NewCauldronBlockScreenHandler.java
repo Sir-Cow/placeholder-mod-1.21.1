@@ -15,41 +15,53 @@ import sircow.placeholder.block.entity.NewCauldronBlockEntity;
 public class NewCauldronBlockScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
+    private final PropertyDelegate propertyDelegateTwo;
     public final NewCauldronBlockEntity blockEntity;
 
     public NewCauldronBlockScreenHandler(int syncId, PlayerInventory inventory, NewCauldronBlockData data) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(data.pos()),
-                new ArrayPropertyDelegate(2));
+                new ArrayPropertyDelegate(2), new ArrayPropertyDelegate(2));
     }
 
     public NewCauldronBlockScreenHandler(int syncId, PlayerInventory playerInventory,
-                                     BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
+                                     BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate, PropertyDelegate arrayPropertyDelegateTwo) {
         super(ModScreenHandlers.NEW_CAULDRON_BLOCK_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);
         inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
+        this.propertyDelegateTwo = arrayPropertyDelegateTwo;
         this.blockEntity = ((NewCauldronBlockEntity) blockEntity);
 
-        this.addSlot(new Slot(inventory, 0, 80, 11));
-        this.addSlot(new Slot(inventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 0, 80, 15)); // item input
+        this.addSlot(new Slot(inventory, 1, 152, 52)); // water input
+        this.addSlot(new Slot(inventory, 2, 80, 52)); // item output
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
 
         addProperties(arrayPropertyDelegate);
+        addProperties(arrayPropertyDelegateTwo);
     }
 
     public boolean isCrafting() {
         return propertyDelegate.get(0) > 0;
     }
 
-    public int getScaledProgress() {
+    public int getScaledProgressArrow() {
         int progress = this.propertyDelegate.get(0);
         int maxProgress = this.propertyDelegate.get(1);  // Max Progress
-        int progressArrowSize = 26;
+        int progressArrowSize = 15;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledProgressWater() {
+        int waterProgress = this.propertyDelegateTwo.get(0);
+        int maxWaterProgress = this.propertyDelegateTwo.get(1);  // Max Progress
+        int progressWaterSize = 32;
+
+        return maxWaterProgress != 0 && waterProgress != 0 ? waterProgress * progressWaterSize / maxWaterProgress : 0;
     }
 
     @Override
