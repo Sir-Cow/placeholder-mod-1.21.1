@@ -3,6 +3,8 @@
   "package": "sircow.placeholder.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AbstractFurnaceBlockEntityAccessor",
+    "AbstractFurnaceBlockEntityMixin",
     "AbstractMinecartEntityMixin",
     "ConduitBlockEntityAccessor",
     "ConduitMixin",
