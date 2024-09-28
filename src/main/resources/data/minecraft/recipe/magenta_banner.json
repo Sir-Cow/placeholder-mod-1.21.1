@@ -1,21 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "bed",
+  "group": "banner",
   "key": {
     "#": {
       "item": "placeholder:magenta_cloth"
     },
-    "X": {
-      "tag": "minecraft:planks"
+    "|": {
+      "item": "minecraft:stick"
     }
   },
   "pattern": [
-    "###",
-    "XXX"
+    "#",
+    "#",
+    "|"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:magenta_bed"
+    "id": "minecraft:magenta_banner"
   }
 }

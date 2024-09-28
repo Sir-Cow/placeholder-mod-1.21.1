@@ -1,21 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "bed",
+  "group": "carpet",
   "key": {
     "#": {
       "item": "placeholder:green_cloth"
-    },
-    "X": {
-      "tag": "minecraft:planks"
     }
   },
   "pattern": [
-    "###",
-    "XXX"
+    "##"
   ],
   "result": {
-    "count": 1,
-    "id": "minecraft:green_bed"
+    "count": 8,
+    "id": "minecraft:green_carpet"
   }
 }

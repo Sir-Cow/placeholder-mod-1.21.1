@@ -1,21 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "bed",
+  "group": "banner",
   "key": {
     "#": {
       "item": "placeholder:gray_cloth"
     },
-    "X": {
-      "tag": "minecraft:planks"
+    "|": {
+      "item": "minecraft:stick"
     }
   },
   "pattern": [
-    "###",
-    "XXX"
+    "#",
+    "#",
+    "|"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:gray_bed"
+    "id": "minecraft:gray_banner"
   }
 }

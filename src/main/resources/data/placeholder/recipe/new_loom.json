@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "bed",
   "key": {
     "#": {
-      "item": "placeholder:orange_cloth"
-    },
-    "X": {
       "tag": "minecraft:planks"
+    },
+    "@": {
+      "item": "minecraft:string"
     }
   },
   "pattern": [
-    "###",
-    "XXX"
+    "@@",
+    "##",
+    "##"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:orange_bed"
+    "id": "placeholder:new_loom"
   }
 }

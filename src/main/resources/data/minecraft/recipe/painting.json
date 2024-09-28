@@ -1,21 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "bed",
   "key": {
     "#": {
-      "item": "placeholder:orange_cloth"
+      "item": "minecraft:stick"
     },
     "X": {
-      "tag": "minecraft:planks"
+      "tag": "placeholder:cloth"
     }
   },
   "pattern": [
     "###",
-    "XXX"
+    "#X#",
+    "###"
   ],
   "result": {
     "count": 1,
-    "id": "minecraft:orange_bed"
+    "id": "minecraft:painting"
   }
 }
