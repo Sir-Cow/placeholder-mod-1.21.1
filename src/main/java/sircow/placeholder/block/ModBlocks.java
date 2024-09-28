@@ -2,6 +2,7 @@ package sircow.placeholder.block;
 
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -11,6 +12,7 @@ import net.minecraft.util.Identifier;
 import sircow.placeholder.Placeholder;
 import sircow.placeholder.block.custom.InductorRailBlock;
 import sircow.placeholder.block.custom.NewCauldronBlock;
+import sircow.placeholder.block.custom.NewLoomBlock;
 
 public class ModBlocks {
     private static Block registerBlock(String name, Block block) {
@@ -95,6 +97,16 @@ public class ModBlocks {
                             .requiresTool()
                             .strength(2.0F)
                             .nonOpaque()
+            ));
+
+    public static final Block NEW_LOOM_BLOCK = registerBlock("new_loom",
+            new NewLoomBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.OAK_TAN)
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(2.5F)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .burnable()
             ));
 
     public static void initialize() {

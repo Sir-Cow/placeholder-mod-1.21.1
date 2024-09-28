@@ -16,7 +16,24 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.placeholder.placeholder_items"))
                     .icon(() -> new ItemStack(ModBlocks.INDUCTOR_RAIL)).entries((displayContext, entries) -> {
                         entries.add(ModItems.RAW_HIDE);
+                        entries.add(ModItems.BLACK_CLOTH);
+                        entries.add(ModItems.BLUE_CLOTH);
+                        entries.add(ModItems.BROWN_CLOTH);
+                        entries.add(ModItems.CYAN_CLOTH);
+                        entries.add(ModItems.GRAY_CLOTH);
+                        entries.add(ModItems.GREEN_CLOTH);
+                        entries.add(ModItems.LIGHT_BLUE_CLOTH);
+                        entries.add(ModItems.LIGHT_GRAY_CLOTH);
+                        entries.add(ModItems.LIME_CLOTH);
+                        entries.add(ModItems.MAGENTA_CLOTH);
+                        entries.add(ModItems.ORANGE_CLOTH);
+                        entries.add(ModItems.PINK_CLOTH);
+                        entries.add(ModItems.PURPLE_CLOTH);
+                        entries.add(ModItems.RED_CLOTH);
+                        entries.add(ModItems.WHITE_CLOTH);
+                        entries.add(ModItems.YELLOW_CLOTH);
                         entries.add(ModBlocks.NEW_CAULDRON_BLOCK);
+                        entries.add(ModBlocks.NEW_LOOM_BLOCK);
                         entries.add(ModBlocks.INDUCTOR_RAIL);
                         entries.add(ModBlocks.EXPOSED_INDUCTOR_RAIL);
                         entries.add(ModBlocks.WEATHERED_INDUCTOR_RAIL);

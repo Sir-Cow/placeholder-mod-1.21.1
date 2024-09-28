@@ -7,11 +7,14 @@ import net.minecraft.client.render.RenderLayer;
 import sircow.placeholder.block.ModBlocks;
 import sircow.placeholder.screen.ModScreenHandlers;
 import sircow.placeholder.screen.NewCauldronBlockScreen;
+import sircow.placeholder.screen.NewLoomBlockScreen;
 
 public class PlaceholderClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+		// gui screens
 		HandledScreens.register(ModScreenHandlers.NEW_CAULDRON_BLOCK_SCREEN_HANDLER, NewCauldronBlockScreen::new);
+		HandledScreens.register(ModScreenHandlers.NEW_LOOM_BLOCK_SCREEN_HANDLER, NewLoomBlockScreen::new);
 		// enable rail textures to be transparent
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.INDUCTOR_RAIL, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPOSED_INDUCTOR_RAIL, RenderLayer.getCutout());

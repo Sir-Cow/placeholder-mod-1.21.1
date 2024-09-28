@@ -13,6 +13,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.create(NewCauldronBlockEntity::new,
                             ModBlocks.NEW_CAULDRON_BLOCK).build());
 
+    public static final BlockEntityType<NewLoomBlockEntity> NEW_LOOM_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Placeholder.MOD_ID, "new_loom_entity"),
+                    BlockEntityType.Builder.create(NewLoomBlockEntity::new,
+                            ModBlocks.NEW_LOOM_BLOCK).build());
+
     public static void registerBlockEntities() {
         Placeholder.LOGGER.info("Registering Block Entities for " + Placeholder.MOD_ID);
     }

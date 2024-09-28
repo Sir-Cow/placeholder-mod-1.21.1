@@ -9,13 +9,22 @@ import sircow.placeholder.Placeholder;
 public class ModItems {
     // items
     public static final Item RAW_HIDE = registerItem("raw_hide", new Item(new Item.Settings()));
-    /*
-    public static final Item TEST_SHIELD = registerItem("test_shield", new ShieldItem(new ShieldItem.Settings().maxDamage(2500)));
-    // currently crashes on use, do not use until fix
-    public static final Item TEST_SHIELD = Registry.register(Registries.ITEM, Identifier.of(Placeholder.MOD_ID, "test_shield"), new FabricShieldItem(new Item.Settings().maxDamage(336), 100, 9, Items.OAK_PLANKS, Items.SPRUCE_PLANKS));
-    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
-    }
-    */
+    public static final Item BLACK_CLOTH = registerItem("black_cloth", new Item(new Item.Settings()));
+    public static final Item BLUE_CLOTH = registerItem("blue_cloth", new Item(new Item.Settings()));
+    public static final Item BROWN_CLOTH = registerItem("brown_cloth", new Item(new Item.Settings()));
+    public static final Item CYAN_CLOTH = registerItem("cyan_cloth", new Item(new Item.Settings()));
+    public static final Item GRAY_CLOTH = registerItem("gray_cloth", new Item(new Item.Settings()));
+    public static final Item GREEN_CLOTH = registerItem("green_cloth", new Item(new Item.Settings()));
+    public static final Item LIGHT_BLUE_CLOTH = registerItem("light_blue_cloth", new Item(new Item.Settings()));
+    public static final Item LIGHT_GRAY_CLOTH = registerItem("light_gray_cloth", new Item(new Item.Settings()));
+    public static final Item LIME_CLOTH = registerItem("lime_cloth", new Item(new Item.Settings()));
+    public static final Item MAGENTA_CLOTH = registerItem("magenta_cloth", new Item(new Item.Settings()));
+    public static final Item ORANGE_CLOTH = registerItem("orange_cloth", new Item(new Item.Settings()));
+    public static final Item PINK_CLOTH = registerItem("pink_cloth", new Item(new Item.Settings()));
+    public static final Item PURPLE_CLOTH = registerItem("purple_cloth", new Item(new Item.Settings()));
+    public static final Item RED_CLOTH = registerItem("red_cloth", new Item(new Item.Settings()));
+    public static final Item WHITE_CLOTH = registerItem("white_cloth", new Item(new Item.Settings()));
+    public static final Item YELLOW_CLOTH = registerItem("yellow_cloth", new Item(new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(Placeholder.MOD_ID, name), item);

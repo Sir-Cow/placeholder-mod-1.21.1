@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "placeholder:item/light_gray_cloth"
+  }
+}

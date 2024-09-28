@@ -12,7 +12,6 @@
     "FoodComponentsMixin",
     "HungerManagerMixin",
     "ItemsMixin",
-    "PersistentProjectileEntityMixin",
     "PhantomSpawnerMixin",
     "PlayerEntityMixin",
     "PotionItemMixin",

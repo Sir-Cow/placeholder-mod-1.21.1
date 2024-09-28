@@ -21,6 +21,7 @@ import sircow.placeholder.block.entity.ModBlockEntities;
 import sircow.placeholder.block.entity.NewCauldronBlockEntity;
 
 public class NewCauldronBlock extends BlockWithEntity implements BlockEntityProvider {
+    public static final MapCodec<NewCauldronBlock> CODEC = createCodec(NewCauldronBlock::new);
     private static final VoxelShape RAYCAST_SHAPE = createCuboidShape(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
     protected static final VoxelShape OUTLINE_SHAPE = VoxelShapes.combineAndSimplify(
             VoxelShapes.fullCube(),
@@ -53,7 +54,7 @@ public class NewCauldronBlock extends BlockWithEntity implements BlockEntityProv
 
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
-        return null;
+        return CODEC;
     }
 
     @Override

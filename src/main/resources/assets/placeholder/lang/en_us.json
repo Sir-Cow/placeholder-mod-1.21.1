@@ -1,5 +1,21 @@
 {
   "item.placeholder.raw_hide": "Raw Hide",
+  "item.placeholder.black_cloth": "Black Cloth",
+  "item.placeholder.blue_cloth": "Blue Cloth",
+  "item.placeholder.brown_cloth": "Brown Cloth",
+  "item.placeholder.cyan_cloth": "Cyan Cloth",
+  "item.placeholder.gray_cloth": "Gray Cloth",
+  "item.placeholder.green_cloth": "Green Cloth",
+  "item.placeholder.light_blue_cloth": "Light Blue Cloth",
+  "item.placeholder.light_gray_cloth": "Light Gray Cloth",
+  "item.placeholder.lime_cloth": "Lime Cloth",
+  "item.placeholder.magenta_cloth": "Magenta Cloth",
+  "item.placeholder.orange_cloth": "Orange Cloth",
+  "item.placeholder.pink_cloth": "Pink Cloth",
+  "item.placeholder.purple_cloth": "Purple Cloth",
+  "item.placeholder.red_cloth": "Red Cloth",
+  "item.placeholder.white_cloth": "White Cloth",
+  "item.placeholder.yellow_cloth": "Yellow Cloth",
 
   "block.placeholder.inductor_rail": "Inductor Rail",
   "block.placeholder.exposed_inductor_rail": "Exposed Inductor Rail",
@@ -10,6 +26,7 @@
   "block.placeholder.waxed_weathered_inductor_rail": "Waxed Weathered Inductor Rail",
   "block.placeholder.waxed_oxidized_inductor_rail": "Waxed Oxidized Inductor Rail",
   "block.placeholder.new_cauldron": "New Cauldron",
+  "block.placeholder.new_loom": "New Loom",
 
   "itemgroup.placeholder.placeholder_items": "Placeholder"
 }
