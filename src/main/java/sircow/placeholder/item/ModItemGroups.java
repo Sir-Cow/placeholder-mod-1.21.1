@@ -17,6 +17,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModBlocks.INDUCTOR_RAIL)).entries((displayContext, entries) -> {
                         entries.add(ModItems.RAW_HIDE);
                         entries.add(ModItems.PHANTOM_SINEW);
+                        entries.add(ModItems.HOLLOW_TWINE);
                         entries.add(ModItems.BLACK_CLOTH);
                         entries.add(ModItems.BLUE_CLOTH);
                         entries.add(ModItems.BROWN_CLOTH);

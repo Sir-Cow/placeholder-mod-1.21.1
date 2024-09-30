@@ -10,6 +10,7 @@ public class ModItems {
     // items
     public static final Item RAW_HIDE = registerItem("raw_hide", new Item(new Item.Settings()));
     public static final Item PHANTOM_SINEW = registerItem("phantom_sinew", new Item(new Item.Settings()));
+    public static final Item HOLLOW_TWINE = registerItem("hollow_twine", new Item(new Item.Settings()));
     public static final Item BLACK_CLOTH = registerItem("black_cloth", new Item(new Item.Settings()));
     public static final Item BLUE_CLOTH = registerItem("blue_cloth", new Item(new Item.Settings()));
     public static final Item BROWN_CLOTH = registerItem("brown_cloth", new Item(new Item.Settings()));

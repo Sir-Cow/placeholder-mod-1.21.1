@@ -56,6 +56,7 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
         conversionMap.put(Items.RED_WOOL, ModItems.RED_CLOTH);
         conversionMap.put(Items.WHITE_WOOL, ModItems.WHITE_CLOTH);
         conversionMap.put(Items.YELLOW_WOOL, ModItems.YELLOW_CLOTH);
+        conversionMap.put(ModItems.PHANTOM_SINEW, ModItems.HOLLOW_TWINE);
     }
 
     public NewLoomBlockEntity(BlockPos pos, BlockState state) {

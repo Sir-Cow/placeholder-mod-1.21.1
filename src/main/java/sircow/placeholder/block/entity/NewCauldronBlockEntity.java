@@ -42,11 +42,12 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
     private int progressWater = 0;
     private int maxWaterProgress = 64;
 
-    // define recipes
+    // define recipes - TURN THIS INTO DATA DRIVEN
     private static final Map<Item, Item> conversionMap = new HashMap<>();
     static {
         conversionMap.put(ModItems.RAW_HIDE, Items.LEATHER);
         conversionMap.put(Items.DIRT, Items.MUD);
+        // concrete
         conversionMap.put(Items.BLACK_CONCRETE_POWDER, Items.BLACK_CONCRETE);
         conversionMap.put(Items.BLUE_CONCRETE_POWDER, Items.BLUE_CONCRETE);
         conversionMap.put(Items.BROWN_CONCRETE_POWDER, Items.BROWN_CONCRETE);
@@ -63,6 +64,40 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
         conversionMap.put(Items.RED_CONCRETE_POWDER, Items.RED_CONCRETE);
         conversionMap.put(Items.WHITE_CONCRETE_POWDER, Items.WHITE_CONCRETE);
         conversionMap.put(Items.YELLOW_CONCRETE_POWDER, Items.YELLOW_CONCRETE);
+        // terracotta
+        conversionMap.put(Items.TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.BLACK_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.BLUE_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.BROWN_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.CYAN_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.GRAY_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.GREEN_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.LIGHT_BLUE_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.LIGHT_GRAY_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.LIME_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.MAGENTA_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.ORANGE_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.PINK_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.PURPLE_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.RED_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.WHITE_TERRACOTTA, Items.CLAY);
+        conversionMap.put(Items.YELLOW_TERRACOTTA, Items.CLAY);
+        // wool
+        conversionMap.put(Items.BLACK_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.BLUE_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.BROWN_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.CYAN_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.GRAY_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.GREEN_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.LIGHT_BLUE_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.LIGHT_GRAY_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.LIME_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.MAGENTA_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.ORANGE_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.PINK_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.PURPLE_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.RED_WOOL, Items.WHITE_WOOL);
+        conversionMap.put(Items.YELLOW_WOOL, Items.WHITE_WOOL);
     }
 
     public NewCauldronBlockEntity(BlockPos pos, BlockState state) {
@@ -156,7 +191,7 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
         }
 
         if(isOutputSlotEmptyOrReceivable()) {
-            if(this.hasRecipe()) {
+            if(this.hasRecipe() && this.progressWater > 0) {
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);
 
@@ -184,7 +219,14 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
         Item outputItem = conversionMap.get(inputItem);
 
         // start crafting process if recipe is successful
-        if (outputItem != null) {
+        // dyed items
+        if (this.getStack(INPUT_SLOT).contains(DataComponentTypes.DYED_COLOR)) {
+            ItemStack result = this.getStack(INPUT_SLOT).copy();
+            result.remove(DataComponentTypes.DYED_COLOR);
+            this.setStack(OUTPUT_SLOT, result);
+        }
+        // everything else
+        else if (outputItem != null) {
             ItemStack result = new ItemStack(outputItem);
             this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
         }
@@ -237,7 +279,12 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
             boolean hasInput = getStack(INPUT_SLOT).getItem() == inputItem;
             return hasInput && this.progressWater >= 1 && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
         }
-        return false;
+        else if (this.getStack(INPUT_SLOT).contains(DataComponentTypes.DYED_COLOR)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
