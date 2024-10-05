@@ -17,6 +17,8 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -43,7 +45,7 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
     private int maxWaterProgress = 64;
 
     // define recipes - TURN THIS INTO DATA DRIVEN
-    private static final Map<Item, Item> conversionMap = new HashMap<>();
+    public static final Map<Item, Item> conversionMap = new HashMap<>();
     static {
         conversionMap.put(ModItems.RAW_HIDE, Items.LEATHER);
         conversionMap.put(Items.DIRT, Items.MUD);
@@ -164,14 +166,17 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, inventory, false, registryLookup);
-        nbt.putInt("newCauldronProgress", progress);
+        Inventories.writeNbt(nbt, this.inventory, false, registryLookup);
+        nbt.putInt("newCauldronProgress", this.progress);
+        nbt.putInt("newCauldronWaterProgress", this.progressWater);
     }
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        progress = nbt.getInt("newCauldronProgress");
+        this.progress = nbt.getInt("newCauldronProgress");
+        this.progressWater = nbt.getInt("newCauldronWaterProgress");
+        Inventories.readNbt(nbt, this.inventory, registryLookup);
     }
 
     @Override
@@ -252,6 +257,8 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
             this.progressWater += 8;
             this.removeStack(INPUT_SLOT_TWO, 1);
             this.setStack(INPUT_SLOT_TWO, new ItemStack(emptyBucket.getItem()));
+            assert world != null;
+            world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
         // water bottle
         else if ((getStack(INPUT_SLOT_TWO).getItem() == Items.POTION && (potionContentsComponent != null && potionContentsComponent.matches(Potions.WATER)))
@@ -262,6 +269,8 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
             ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
             this.removeStack(INPUT_SLOT_TWO, 1);
             this.setStack(INPUT_SLOT_TWO, new ItemStack(emptyBottle.getItem()));
+            assert world != null;
+            world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
         // cap water limit at 100
         if (this.progressWater > this.maxWaterProgress){

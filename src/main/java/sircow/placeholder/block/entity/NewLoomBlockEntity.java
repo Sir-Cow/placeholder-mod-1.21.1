@@ -99,14 +99,15 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, inventory, false, registryLookup);
-        nbt.putInt("newLoomProgress", progress);
+        Inventories.writeNbt(nbt, this.inventory, false, registryLookup);
+        nbt.putInt("newLoomProgress", this.progress);
     }
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        progress = nbt.getInt("newLoomProgress");
+        this.progress = nbt.getInt("newLoomProgress");
+        Inventories.readNbt(nbt, this.inventory, registryLookup);
     }
 
     @Override

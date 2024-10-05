@@ -1,16 +1,23 @@
 package sircow.placeholder.screen;
 
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.potion.Potions;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import sircow.placeholder.block.entity.NewCauldronBlockData;
 import sircow.placeholder.block.entity.NewCauldronBlockEntity;
+
+import static sircow.placeholder.block.entity.NewCauldronBlockEntity.conversionMap;
 
 public class NewCauldronBlockScreenHandler extends ScreenHandler {
     private final Inventory inventory;
@@ -68,14 +75,42 @@ public class NewCauldronBlockScreenHandler extends ScreenHandler {
     public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
+        PotionContentsComponent potionContentsComponent = slot.getStack().get(DataComponentTypes.POTION_CONTENTS);
         if (slot != null && slot.hasStack()) {
             ItemStack originalStack = slot.getStack();
             newStack = originalStack.copy();
-            if (invSlot < this.inventory.size()) {
-                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
+            Item inputCheck = conversionMap.get(originalStack.getItem());
+
+            if (invSlot == 2) {
+                if (!this.insertItem(originalStack, 3, 39, true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
+                slot.onQuickTransfer(originalStack, newStack);
+            }
+            else if (invSlot != 1 && invSlot != 0) {
+                // shift click into water slot
+                if (originalStack.getItem() == Items.WATER_BUCKET ||
+                        originalStack.getItem() == Items.POTION && (potionContentsComponent != null && potionContentsComponent.matches(Potions.WATER))) {
+                    if (!this.insertItem(originalStack, 1, 2, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                // shift click into input slot
+                else if (inputCheck != null || originalStack.contains(DataComponentTypes.DYED_COLOR)) {
+                    if (!this.insertItem(originalStack, 0, 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (invSlot >= 3 && invSlot < 30) {
+                    if (!this.insertItem(originalStack, 30, 39, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (invSlot >= 30 && invSlot < 39 && !this.insertItem(originalStack, 3, 30, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+            else if (!this.insertItem(originalStack, 3, 39, false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -84,6 +119,11 @@ public class NewCauldronBlockScreenHandler extends ScreenHandler {
             } else {
                 slot.markDirty();
             }
+
+            if (originalStack.getCount() == newStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+            slot.onTakeItem(player, originalStack);
         }
         return newStack;
     }
