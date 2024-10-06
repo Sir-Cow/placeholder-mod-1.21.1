@@ -49,6 +49,7 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
     static {
         conversionMap.put(ModItems.RAW_HIDE, Items.LEATHER);
         conversionMap.put(Items.DIRT, Items.MUD);
+        conversionMap.put(Items.COARSE_DIRT, Items.MUD);
         // concrete
         conversionMap.put(Items.BLACK_CONCRETE_POWDER, Items.BLACK_CONCRETE);
         conversionMap.put(Items.BLUE_CONCRETE_POWDER, Items.BLUE_CONCRETE);
@@ -268,7 +269,7 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
             this.progressWater += stackSize * 2;
             ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
             this.removeStack(INPUT_SLOT_TWO, 1);
-            this.setStack(INPUT_SLOT_TWO, new ItemStack(emptyBottle.getItem()));
+            this.setStack(INPUT_SLOT_TWO, new ItemStack(emptyBottle.getItem(), stackSize));
             assert world != null;
             world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }

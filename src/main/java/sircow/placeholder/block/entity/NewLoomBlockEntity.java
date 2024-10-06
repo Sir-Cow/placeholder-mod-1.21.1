@@ -3,6 +3,8 @@ package sircow.placeholder.block.entity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -24,6 +26,7 @@ import sircow.placeholder.screen.NewLoomBlockScreenHandler;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4, ItemStack.EMPTY);
@@ -161,7 +164,18 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
         }
         this.removeStack(INPUT_SLOT, 1);
         this.removeStack(INPUT_SLOT_TWO, 1);
-        this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
+        // unbreaking check
+        int unbreakingLevel = EnchantmentHelper.getLevel(Objects.requireNonNull(this.getWorld()).getRegistryManager()
+                .getWrapperOrThrow(Enchantments.UNBREAKING.getRegistryRef())
+                .getOrThrow(Enchantments.UNBREAKING), this.getStack(INPUT_SLOT_THREE));
+        if (unbreakingLevel > 0) {
+            double chance = 1.0 / (unbreakingLevel + 1);
+            if (Math.random() >= chance) {
+                this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
+            }
+        } else {
+            this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
+        }
     }
 
     private boolean hasCraftingFinished() {

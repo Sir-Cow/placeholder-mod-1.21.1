@@ -95,6 +95,7 @@ public class FoodComponentsMixin {
                 .nutrition(6)
                 .saturationModifier(0.2F)
                 .statusEffect(new StatusEffectInstance(StatusEffects.POISON, 0, 0), 1.0F)
+                .snack()
                 .build();
         MELON_SLICE = new FoodComponent.Builder().nutrition(2).saturationModifier(1.0F).snack().build();
         MUSHROOM_STEW = new FoodComponent.Builder().nutrition(8).saturationModifier(1.5F).usingConvertsTo(Items.BOWL).build();
