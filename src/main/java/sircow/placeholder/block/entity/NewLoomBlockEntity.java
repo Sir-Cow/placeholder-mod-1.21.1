@@ -37,8 +37,6 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
     private static final int OUTPUT_SLOT = 3;
 
     protected final PropertyDelegate propertyDelegate;
-    private int progress = 0;
-    private int maxProgress = 10;
 
     // define recipes
     private static final Map<Item, Item> conversionMap = new HashMap<>();
@@ -64,22 +62,15 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
 
     public NewLoomBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.NEW_LOOM_BLOCK_ENTITY, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        this.propertyDelegate = new PropertyDelegate(){
             @Override
             public int get(int index) {
-                return switch (index) {
-                    case 0 -> NewLoomBlockEntity.this.progress;
-                    case 1 -> NewLoomBlockEntity.this.maxProgress;
-                    default -> 0;
-                };
+                return 0;
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> NewLoomBlockEntity.this.progress = value;
-                    case 1 -> NewLoomBlockEntity.this.maxProgress = value;
-                }
+
             }
 
             @Override
@@ -103,13 +94,11 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, this.inventory, false, registryLookup);
-        nbt.putInt("newLoomProgress", this.progress);
     }
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        this.progress = nbt.getInt("newLoomProgress");
         Inventories.readNbt(nbt, this.inventory, registryLookup);
     }
 
@@ -129,26 +118,12 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
             return;
         }
 
-        if(isOutputSlotEmptyOrReceivable()) {
+        if (isOutputSlotEmptyOrReceivable()) {
             if(this.hasRecipe()) {
-                this.increaseCraftProgress();
                 markDirty(world, pos, state);
-
-                if(hasCraftingFinished()) {
-                    this.craftItem();
-                    this.resetProgress();
-                }
-            } else {
-                this.resetProgress();
+                this.craftItem();
             }
-        } else {
-            this.resetProgress();
-            markDirty(world, pos, state);
         }
-    }
-
-    private void resetProgress() {
-        this.progress = 0;
     }
 
     private void craftItem() {
@@ -160,30 +135,33 @@ public class NewLoomBlockEntity extends BlockEntity implements ExtendedScreenHan
         // start crafting process if recipe is successful
         if (outputItem != null && inputItem2 == inputItem && inputItemShears == Items.SHEARS) {
             ItemStack result = new ItemStack(outputItem);
-            this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
-        }
-        this.removeStack(INPUT_SLOT, 1);
-        this.removeStack(INPUT_SLOT_TWO, 1);
-        // unbreaking check
-        int unbreakingLevel = EnchantmentHelper.getLevel(Objects.requireNonNull(this.getWorld()).getRegistryManager()
-                .getWrapperOrThrow(Enchantments.UNBREAKING.getRegistryRef())
-                .getOrThrow(Enchantments.UNBREAKING), this.getStack(INPUT_SLOT_THREE));
-        if (unbreakingLevel > 0) {
-            double chance = 1.0 / (unbreakingLevel + 1);
-            if (Math.random() >= chance) {
-                this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
+            if (this.getStack(OUTPUT_SLOT).isEmpty()) {
+                this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
+                this.removeStack(INPUT_SLOT, 1);
+                this.removeStack(INPUT_SLOT_TWO, 1);
+                // unbreaking check
+                int unbreakingLevel = EnchantmentHelper.getLevel(Objects.requireNonNull(this.getWorld()).getRegistryManager()
+                        .getWrapperOrThrow(Enchantments.UNBREAKING.getRegistryRef())
+                        .getOrThrow(Enchantments.UNBREAKING), this.getStack(INPUT_SLOT_THREE));
+                if (unbreakingLevel > 0) {
+                    double chance = 1.0 / (unbreakingLevel + 1);
+                    if (Math.random() >= chance) {
+                        this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
+                        if (this.getStack(INPUT_SLOT_THREE).getDamage() >= this.getStack(INPUT_SLOT_THREE).getMaxDamage()) {
+                            this.getStack(INPUT_SLOT_THREE).decrement(1);
+                        }
+                    }
+                } else {
+                    this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
+                    if (this.getStack(INPUT_SLOT_THREE).getDamage() >= this.getStack(INPUT_SLOT_THREE).getMaxDamage()) {
+                        this.getStack(INPUT_SLOT_THREE).decrement(1);
+                    }
+                }
             }
-        } else {
-            this.getStack(INPUT_SLOT_THREE).setDamage(this.getStack(INPUT_SLOT_THREE).getDamage() + 1);
         }
-    }
-
-    private boolean hasCraftingFinished() {
-        return progress >= maxProgress;
-    }
-
-    private void increaseCraftProgress() {
-        progress++;
+        else {
+            this.setStack(OUTPUT_SLOT, ItemStack.EMPTY);
+        }
     }
 
     private boolean hasRecipe() {

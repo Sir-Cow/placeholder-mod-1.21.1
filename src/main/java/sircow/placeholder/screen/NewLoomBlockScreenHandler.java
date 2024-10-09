@@ -12,7 +12,6 @@ import sircow.placeholder.block.entity.NewLoomBlockEntity;
 
 public class NewLoomBlockScreenHandler extends ScreenHandler {
     private final Inventory inventory;
-    private final PropertyDelegate propertyDelegate;
     public final NewLoomBlockEntity blockEntity;
 
     public NewLoomBlockScreenHandler(int syncId, PlayerInventory inventory, NewLoomBlockData data) {
@@ -24,7 +23,6 @@ public class NewLoomBlockScreenHandler extends ScreenHandler {
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);
         inventory.onOpen(playerInventory.player);
-        this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((NewLoomBlockEntity) blockEntity);
 
         this.addSlot(new Slot(inventory, 0, 48, 26)); // input 1
@@ -45,8 +43,6 @@ public class NewLoomBlockScreenHandler extends ScreenHandler {
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
-
-        addProperties(arrayPropertyDelegate);
     }
 
     @Override

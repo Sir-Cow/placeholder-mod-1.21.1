@@ -25,14 +25,12 @@ public class NewLoomBlock extends BlockWithEntity implements BlockEntityProvider
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
     public static final MapCodec<NewLoomBlock> CODEC = createCodec(NewLoomBlock::new);
 
-    public NewLoomBlock(Settings settings) {
+    public NewLoomBlock(AbstractBlock.Settings settings) {
         super(settings);
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
-        return CODEC;
-    }
+    protected MapCodec<? extends BlockWithEntity> getCodec() { return CODEC; }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
