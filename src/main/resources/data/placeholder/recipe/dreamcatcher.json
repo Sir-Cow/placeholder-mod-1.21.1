@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": {
+      "item": "placeholder:hollow_twine"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "TST",
+    "STS",
+    "FSF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "placeholder:dreamcatcher"
+  }
+}

@@ -18,6 +18,8 @@ public class ModItemGroups {
                         entries.add(ModItems.RAW_HIDE);
                         entries.add(ModItems.PHANTOM_SINEW);
                         entries.add(ModItems.HOLLOW_TWINE);
+                        entries.add(ModItems.DREAMCATCHER);
+
                         entries.add(ModItems.BLACK_CLOTH);
                         entries.add(ModItems.BLUE_CLOTH);
                         entries.add(ModItems.BROWN_CLOTH);
@@ -34,8 +36,10 @@ public class ModItemGroups {
                         entries.add(ModItems.RED_CLOTH);
                         entries.add(ModItems.WHITE_CLOTH);
                         entries.add(ModItems.YELLOW_CLOTH);
+
                         entries.add(ModBlocks.NEW_CAULDRON_BLOCK);
                         entries.add(ModBlocks.NEW_LOOM_BLOCK);
+
                         entries.add(ModBlocks.INDUCTOR_RAIL);
                         entries.add(ModBlocks.EXPOSED_INDUCTOR_RAIL);
                         entries.add(ModBlocks.WEATHERED_INDUCTOR_RAIL);

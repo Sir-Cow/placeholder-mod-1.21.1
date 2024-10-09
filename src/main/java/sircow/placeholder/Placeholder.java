@@ -35,6 +35,6 @@ public class Placeholder implements ModInitializer {
 		ModEvents.registerModEvents();
 		// other
 		ModBlocks.initialize();
-		ModEvents.disableSleeping();
+		ModEvents.modifySleeping();
 	}
 }
