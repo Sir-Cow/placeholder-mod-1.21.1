@@ -72,7 +72,7 @@ public class FoodComponentsMixin {
         COOKED_RABBIT = new FoodComponent.Builder().nutrition(5).saturationModifier(1.2F).build();
         COOKED_SALMON = new FoodComponent.Builder().nutrition(6).saturationModifier(1.2F).build();
         COOKIE = new FoodComponent.Builder().nutrition(2).saturationModifier(0.2F).snack().build();
-        DRIED_KELP = new FoodComponent.Builder().nutrition(1).saturationModifier(1.2F).build();
+        DRIED_KELP = new FoodComponent.Builder().nutrition(1).saturationModifier(1.2F).snack().build();
         ENCHANTED_GOLDEN_APPLE = new FoodComponent.Builder()
                 .nutrition(8)
                 .saturationModifier(1.2F)

@@ -68,7 +68,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.STRENGTH, Items.GLOWSTONE_DUST, Potions.STRONG_STRENGTH);
         builder.registerPotionRecipe(Potions.WATER, Items.FERMENTED_SPIDER_EYE, Potions.WEAKNESS);
         builder.registerPotionRecipe(Potions.WEAKNESS, Items.REDSTONE, Potions.LONG_WEAKNESS);
-        builder.registerPotionRecipe(Potions.AWKWARD, ModItems.PHANTOM_SINEW, Potions.SLOW_FALLING);
+        builder.registerPotionRecipe(Potions.AWKWARD, ModItems.PHANTOM_SINEW, Potions.SLOW_FALLING); // this changed
         builder.registerPotionRecipe(Potions.SLOW_FALLING, Items.REDSTONE, Potions.LONG_SLOW_FALLING);
         ci.cancel();
     }

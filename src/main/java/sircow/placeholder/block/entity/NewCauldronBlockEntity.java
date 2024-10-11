@@ -273,9 +273,9 @@ public class NewCauldronBlockEntity extends BlockEntity implements ExtendedScree
             assert world != null;
             world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
-        // cap water limit at 100
-        if (this.progressWater > this.maxWaterProgress){
-            this.progressWater = 100;
+        // cap water limit at 64
+        if (this.progressWater > this.maxWaterProgress) {
+            this.progressWater = 64;
         }
     }
 

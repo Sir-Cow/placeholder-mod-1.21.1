@@ -11,6 +11,7 @@
     "ConduitMixin",
     "CrossbowMixin",
     "FoodComponentsMixin",
+    "HoneyBottleItemMixin",
     "HungerManagerMixin",
     "ItemsMixin",
     "PhantomSpawnerMixin",
