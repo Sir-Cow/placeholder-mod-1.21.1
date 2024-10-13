@@ -20,12 +20,12 @@ public class BrewingRecipeRegistryMixin {
         builder.registerItemRecipe(Items.SPLASH_POTION, Items.DRAGON_BREATH, Items.LINGERING_POTION);
         builder.registerPotionRecipe(Potions.WATER, Items.GLOWSTONE_DUST, Potions.THICK);
         builder.registerPotionRecipe(Potions.WATER, Items.REDSTONE, Potions.MUNDANE);
-        builder.registerPotionRecipe(Potions.WATER, Items.NETHER_WART, Potions.AWKWARD);
+        // builder.registerPotionRecipe(Potions.WATER, Items.NETHER_WART, Potions.AWKWARD); remove awkward potion recipe
         builder.registerRecipes(Items.BREEZE_ROD, Potions.WIND_CHARGED);
         builder.registerRecipes(Items.SLIME_BLOCK, Potions.OOZING);
         builder.registerRecipes(Items.STONE, Potions.INFESTED);
         builder.registerRecipes(Items.COBWEB, Potions.WEAVING);
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.GOLDEN_CARROT, Potions.NIGHT_VISION);
+        builder.registerPotionRecipe(Potions.WATER, Items.GOLDEN_CARROT, Potions.NIGHT_VISION); // changed
         builder.registerPotionRecipe(Potions.NIGHT_VISION, Items.REDSTONE, Potions.LONG_NIGHT_VISION);
         builder.registerPotionRecipe(Potions.NIGHT_VISION, Items.FERMENTED_SPIDER_EYE, Potions.INVISIBILITY);
         builder.registerPotionRecipe(Potions.LONG_NIGHT_VISION, Items.FERMENTED_SPIDER_EYE, Potions.LONG_INVISIBILITY);
@@ -39,7 +39,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.LONG_LEAPING, Items.FERMENTED_SPIDER_EYE, Potions.LONG_SLOWNESS);
         builder.registerPotionRecipe(Potions.SLOWNESS, Items.REDSTONE, Potions.LONG_SLOWNESS);
         builder.registerPotionRecipe(Potions.SLOWNESS, Items.GLOWSTONE_DUST, Potions.STRONG_SLOWNESS);
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.TURTLE_HELMET, Potions.TURTLE_MASTER);
+        builder.registerPotionRecipe(Potions.WATER, Items.TURTLE_HELMET, Potions.TURTLE_MASTER); // changed
         builder.registerPotionRecipe(Potions.TURTLE_MASTER, Items.REDSTONE, Potions.LONG_TURTLE_MASTER);
         builder.registerPotionRecipe(Potions.TURTLE_MASTER, Items.GLOWSTONE_DUST, Potions.STRONG_TURTLE_MASTER);
         builder.registerPotionRecipe(Potions.SWIFTNESS, Items.FERMENTED_SPIDER_EYE, Potions.SLOWNESS);
@@ -47,7 +47,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerRecipes(Items.SUGAR, Potions.SWIFTNESS);
         builder.registerPotionRecipe(Potions.SWIFTNESS, Items.REDSTONE, Potions.LONG_SWIFTNESS);
         builder.registerPotionRecipe(Potions.SWIFTNESS, Items.GLOWSTONE_DUST, Potions.STRONG_SWIFTNESS);
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.PUFFERFISH, Potions.WATER_BREATHING);
+        builder.registerPotionRecipe(Potions.WATER, Items.PUFFERFISH, Potions.WATER_BREATHING); // changed
         builder.registerPotionRecipe(Potions.WATER_BREATHING, Items.REDSTONE, Potions.LONG_WATER_BREATHING);
         builder.registerRecipes(Items.GLISTERING_MELON_SLICE, Potions.HEALING);
         builder.registerPotionRecipe(Potions.HEALING, Items.GLOWSTONE_DUST, Potions.STRONG_HEALING);
@@ -68,7 +68,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.STRENGTH, Items.GLOWSTONE_DUST, Potions.STRONG_STRENGTH);
         builder.registerPotionRecipe(Potions.WATER, Items.FERMENTED_SPIDER_EYE, Potions.WEAKNESS);
         builder.registerPotionRecipe(Potions.WEAKNESS, Items.REDSTONE, Potions.LONG_WEAKNESS);
-        builder.registerPotionRecipe(Potions.AWKWARD, ModItems.PHANTOM_SINEW, Potions.SLOW_FALLING); // this changed
+        builder.registerPotionRecipe(Potions.WATER, ModItems.PHANTOM_SINEW, Potions.SLOW_FALLING); // changed
         builder.registerPotionRecipe(Potions.SLOW_FALLING, Items.REDSTONE, Potions.LONG_SLOW_FALLING);
         ci.cancel();
     }

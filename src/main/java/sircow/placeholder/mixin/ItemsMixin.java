@@ -1,14 +1,12 @@
 package sircow.placeholder.mixin;
 
+import net.minecraft.block.Block;
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static net.minecraft.item.Items.register;
 
@@ -42,5 +40,13 @@ public abstract class ItemsMixin {
     @ModifyArg(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item$Settings;maxCount(I)Lnet/minecraft/item/Item$Settings;", ordinal = 0),
             slice = @Slice( from = @At(value = "NEW", target = "Lnet/minecraft/item/SuspiciousStewItem;")))
     private static int modifySuspiciousStewStackSize(int old) { return 16; }
+
+    // make honeycomb edible
+    @ModifyArg(method = "<clinit>", slice = @Slice(from = @At(value = "CONSTANT", args = "stringValue=honeycomb")),
+            at = @At(value = "INVOKE", target = "net/minecraft/item/HoneycombItem.<init>(Lnet/minecraft/item/Item$Settings;)V", ordinal = 0))
+    private static Item.Settings modifyHoneycomb (Item.Settings settings) {
+        return settings.food(
+                new FoodComponent.Builder().nutrition(6).saturationModifier(0.1F).snack().build());
+    }
 }
 

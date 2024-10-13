@@ -7,6 +7,8 @@
     "AbstractFurnaceBlockEntityMixin",
     "AbstractMinecartEntityMixin",
     "BrewingRecipeRegistryMixin",
+    "BrewingStandBlockEntityMixin",
+    "BrewingStandScreenHandlerMixin",
     "ConduitBlockEntityAccessor",
     "ConduitMixin",
     "CrossbowMixin",
