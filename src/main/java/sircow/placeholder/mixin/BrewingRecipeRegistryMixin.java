@@ -18,9 +18,10 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionType(Items.LINGERING_POTION);
         builder.registerItemRecipe(Items.POTION, Items.GUNPOWDER, Items.SPLASH_POTION);
         builder.registerItemRecipe(Items.SPLASH_POTION, Items.DRAGON_BREATH, Items.LINGERING_POTION);
-        builder.registerPotionRecipe(Potions.WATER, Items.GLOWSTONE_DUST, Potions.THICK);
-        builder.registerPotionRecipe(Potions.WATER, Items.REDSTONE, Potions.MUNDANE);
-        // builder.registerPotionRecipe(Potions.WATER, Items.NETHER_WART, Potions.AWKWARD); remove awkward potion recipe
+        // remove these potion recipes
+        // builder.registerPotionRecipe(Potions.WATER, Items.GLOWSTONE_DUST, Potions.THICK);
+        // builder.registerPotionRecipe(Potions.WATER, Items.REDSTONE, Potions.MUNDANE);
+        // builder.registerPotionRecipe(Potions.WATER, Items.NETHER_WART, Potions.AWKWARD);
         builder.registerRecipes(Items.BREEZE_ROD, Potions.WIND_CHARGED);
         builder.registerRecipes(Items.SLIME_BLOCK, Potions.OOZING);
         builder.registerRecipes(Items.STONE, Potions.INFESTED);
