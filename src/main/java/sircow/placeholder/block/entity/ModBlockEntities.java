@@ -18,6 +18,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.create(NewLoomBlockEntity::new,
                             ModBlocks.NEW_LOOM_BLOCK).build());
 
+    public static final BlockEntityType<NewFletchingTableBlockEntity> NEW_FLETCHING_TABLE_BLOCK_ENTITY =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Placeholder.MOD_ID, "new_fletching_table_entity"),
+                    BlockEntityType.Builder.create(NewFletchingTableBlockEntity::new,
+                            ModBlocks.NEW_FLETCHING_TABLE_BLOCK).build());
+
     public static void registerBlockEntities() {
         Placeholder.LOGGER.info("Registering Block Entities for " + Placeholder.MOD_ID);
     }

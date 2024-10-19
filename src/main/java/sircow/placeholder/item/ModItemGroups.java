@@ -39,6 +39,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.NEW_CAULDRON_BLOCK);
                         entries.add(ModBlocks.NEW_LOOM_BLOCK);
+                        entries.add(ModBlocks.NEW_FLETCHING_TABLE_BLOCK);
 
                         entries.add(ModBlocks.INDUCTOR_RAIL);
                         entries.add(ModBlocks.EXPOSED_INDUCTOR_RAIL);

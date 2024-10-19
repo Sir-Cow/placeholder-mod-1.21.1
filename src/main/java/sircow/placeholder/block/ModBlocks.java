@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 import sircow.placeholder.Placeholder;
 import sircow.placeholder.block.custom.InductorRailBlock;
 import sircow.placeholder.block.custom.NewCauldronBlock;
+import sircow.placeholder.block.custom.NewFletchingTableBlock;
 import sircow.placeholder.block.custom.NewLoomBlock;
 
 public class ModBlocks {
@@ -101,6 +102,16 @@ public class ModBlocks {
 
     public static final Block NEW_LOOM_BLOCK = registerBlock("new_loom",
             new NewLoomBlock(
+                    AbstractBlock.Settings.create()
+                            .mapColor(MapColor.OAK_TAN)
+                            .instrument(NoteBlockInstrument.BASS)
+                            .strength(2.5F)
+                            .sounds(BlockSoundGroup.WOOD)
+                            .burnable()
+            ));
+
+    public static final Block NEW_FLETCHING_TABLE_BLOCK = registerBlock("new_fletching_table",
+            new NewFletchingTableBlock(
                     AbstractBlock.Settings.create()
                             .mapColor(MapColor.OAK_TAN)
                             .instrument(NoteBlockInstrument.BASS)

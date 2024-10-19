@@ -8,6 +8,7 @@ import sircow.placeholder.block.ModBlocks;
 import sircow.placeholder.screen.ModScreenHandlers;
 import sircow.placeholder.screen.NewCauldronBlockScreen;
 import sircow.placeholder.screen.NewLoomBlockScreen;
+import sircow.placeholder.screen.NewFletchingTableBlockScreen;
 
 public class PlaceholderClient implements ClientModInitializer {
 	@Override
@@ -15,6 +16,7 @@ public class PlaceholderClient implements ClientModInitializer {
 		// gui screens
 		HandledScreens.register(ModScreenHandlers.NEW_CAULDRON_BLOCK_SCREEN_HANDLER, NewCauldronBlockScreen::new);
 		HandledScreens.register(ModScreenHandlers.NEW_LOOM_BLOCK_SCREEN_HANDLER, NewLoomBlockScreen::new);
+		HandledScreens.register(ModScreenHandlers.NEW_FLETCHING_TABLE_BLOCK_SCREEN_HANDLER, NewFletchingTableBlockScreen::new);
 		// enable rail textures to be transparent
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.INDUCTOR_RAIL, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EXPOSED_INDUCTOR_RAIL, RenderLayer.getCutout());
